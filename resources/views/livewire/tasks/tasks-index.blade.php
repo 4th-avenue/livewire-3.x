@@ -13,14 +13,14 @@
                     <!-- Slug -->
                     <div class="mt-4">
                         <x-input-label for="slug" :value="__('Slug')" />
-                        <x-text-input wire:model="slug" id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" required autofocus autocomplete="slug" />
+                        <x-text-input wire:model="slug" id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" required autocomplete="slug" />
                         <x-input-error :messages="$errors->get('slug')" class="mt-2" />
                     </div>
 
                     <!-- Description -->
                     <div class="mt-4">
                         <x-input-label for="description" :value="__('Description')" />
-                        <textarea wire:model="description" id="description" rows="4" class="block mt-1 p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Leave a comment..."></textarea>
+                        <textarea wire:model="description" id="description" rows="4" class="block mt-1 p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500" placeholder="Leave a comment..." required></textarea>
                         <x-input-error :messages="$errors->get('description')" class="mt-2" />
                     </div>
 
@@ -34,6 +34,7 @@
                                 </option>
                             @endforeach
                         </select>
+                        <x-input-error :messages="$errors->get('status')" class="mt-2" />
                     </div>
 
                     <!-- Priority -->
@@ -46,12 +47,13 @@
                                 </option>
                             @endforeach
                         </select>
+                        <x-input-error :messages="$errors->get('priority')" class="mt-2" />
                     </div>
 
                     <!-- Deadline -->
                     <div class="mt-4">
                         <x-input-label for="deadline" :value="__('Deadline')" />
-                        <x-text-input wire:model="deadline" id="deadline" class="block mt-1 w-full" type="date" name="deadline" :value="old('deadline')" required autofocus autocomplete="deadline" />
+                        <x-text-input wire:model="deadline" id="deadline" class="block mt-1 w-full" type="date" name="deadline" :value="old('deadline')" required autocomplete="deadline" />
                         <x-input-error :messages="$errors->get('deadline')" class="mt-2" />
                     </div>
 
