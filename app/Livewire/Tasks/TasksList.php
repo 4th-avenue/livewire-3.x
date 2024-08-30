@@ -10,6 +10,11 @@ class TasksList extends Component
 {
     use WithPagination;
 
+    public function placeholder()
+    {
+        return view('skeleton');
+    }
+
     #[On('task-created')]
 
     public function render()
