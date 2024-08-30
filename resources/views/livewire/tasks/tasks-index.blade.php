@@ -1,6 +1,10 @@
 <div class="py-12">
     <div class="max-w-7xl mx-auto flex sm:px-6 lg:px-8">
-        <livewire:tasks.tasks-list />
-        <livewire:tasks.tasks-form />
+        <div class="flex-grow mr-8">
+            <livewire:tasks.tasks-list />
+        </div>
+        <div class="flex-shrink-0 w-full md:w-5/12">
+            <livewire:tasks.tasks-form />
+        </div>
     </div>
 </div>
