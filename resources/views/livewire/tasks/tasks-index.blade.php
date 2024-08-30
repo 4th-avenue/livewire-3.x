@@ -12,15 +12,23 @@
                     <!-- Title -->
                     <div>
                         <x-input-label for="title" :value="__('Title')" />
-                        <x-text-input wire:model="form.title" id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
-                        <x-input-error :messages="$errors->get('form.title')" class="mt-2" />
+                        <x-text-input wire:model.live="form.title" id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
+                        <div class="text-sm text-red-600 mt-2">
+                            @error('form.title')
+                                <span>{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
 
                     <!-- Slug -->
                     <div class="mt-4">
                         <x-input-label for="slug" :value="__('Slug')" />
-                        <x-text-input wire:model="form.slug" id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" required autocomplete="slug" />
-                        <x-input-error :messages="$errors->get('form.slug')" class="mt-2" />
+                        <x-text-input wire:model.blur="form.slug" id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" required autocomplete="slug" />
+                        <div class="text-sm text-red-600 mt-2">
+                            @error('form.slug')
+                                <span>{{ $message }}</span>
+                            @enderror
+                        </div>
                     </div>
 
                     <!-- Description -->
