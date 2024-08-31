@@ -1,5 +1,5 @@
 <div class="space-y-4">
-    <livewire:tasks.tasks-count :count="$count" />
+    <livewire:tasks.tasks-count :$tasksByStatus />
     @foreach ($tasks as $task)
         <a href="#"
             class="flex flex-col bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">

@@ -8,7 +8,7 @@ use Livewire\Attributes\Reactive;
 class TasksCount extends Component
 {
     #[Reactive]
-    public $count;
+    public $tasksByStatus;
 
     public function render()
     {
