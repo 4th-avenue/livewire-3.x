@@ -21,6 +21,7 @@ class TasksList extends Component
     {
         return view('livewire.tasks.tasks-list', [
             'tasks' => auth()->user()->tasks()->orderBy('created_at', 'desc')->paginate(5),
+            'count' => auth()->user()->tasks()->count(),
         ]);
     }
 }
