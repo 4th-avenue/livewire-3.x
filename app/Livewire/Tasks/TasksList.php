@@ -6,6 +6,7 @@ use App\Models\Task;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
+use Livewire\Attributes\Computed;
 use Illuminate\Support\Facades\DB;
 
 class TasksList extends Component
@@ -23,18 +24,33 @@ class TasksList extends Component
         $task->update([
             'status' => $status
         ]);
+
+        unset($this->tasksByStatus);
+    }
+
+    #[Computed]
+    public function tasks()
+    {
+        return auth()->user()->tasks()->orderBy('id', 'desc')->paginate(5);
+    }
+
+    #[Computed(persist: true, key: 'user_tasks_by_status')]
+    public function tasksByStatus()
+    {
+        return auth()->user()->tasks()->select('status', DB::raw('COUNT(*) as count'))
+            ->groupBy('status')
+            ->orderBy('status', 'desc')
+            ->get();
     }
 
     #[On('task-created')]
+    public function taskCreated()
+    {
+        unset($this->tasksByStatus);
+    }
 
     public function render()
     {
-        return view('livewire.tasks.tasks-list', [
-            'tasks' => auth()->user()->tasks()->orderBy('created_at', 'desc')->paginate(5),
-            'tasksByStatus' => auth()->user()->tasks()->select('status', DB::raw('COUNT(*) as count'))
-                ->groupBy('status')
-                ->orderBy('status', 'desc')
-                ->get(),
-        ]);
+        return view('livewire.tasks.tasks-list');
     }
 }
