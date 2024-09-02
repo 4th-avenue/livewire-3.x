@@ -6,6 +6,7 @@ use App\Models\Image;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
+use Livewire\Attributes\Computed;
 
 class ImageIndex extends Component
 {
@@ -31,6 +32,20 @@ class ImageIndex extends Component
         }
 
         $this->reset();
+        unset($this->images);
+    }
+
+    #[Computed(persist: true, key: 'images')]
+    public function images()
+    {
+        return Image::all();
+    }
+
+    public function download($id)
+    {
+        $image = Image::find($id);
+
+        return response()->download(storage_path('app/public/'.$image->path), 'image.png');
     }
 
     public function render()
