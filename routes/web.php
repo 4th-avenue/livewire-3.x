@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\ImageIndex;
 use App\Livewire\Tasks\TasksIndex;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -18,6 +19,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/tasks', TasksIndex::class)->name('tasks.index');
+    Route::get('/images', ImageIndex::class)->name('images.index');
 });
 
 require __DIR__.'/auth.php';
