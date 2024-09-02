@@ -11,22 +11,22 @@
             <div>
                 <x-input-label for="title" :value="__('Title')" />
                 <x-text-input wire:model.live="form.title" id="title" class="block mt-1 w-full" type="text" name="title" :value="old('title')" required autofocus autocomplete="title" />
-                <div class="text-sm text-red-600 mt-2">
-                    @error('form.title')
+                @error('form.title')
+                    <div class="text-sm text-red-600 mt-2">
                         <span>{{ $message }}</span>
-                    @enderror
-                </div>
+                    </div>
+                @enderror
             </div>
 
             <!-- Slug -->
             <div class="mt-4">
                 <x-input-label for="slug" :value="__('Slug')" />
                 <x-text-input wire:model.blur="form.slug" id="slug" class="block mt-1 w-full" type="text" name="slug" :value="old('slug')" required autocomplete="slug" />
-                <div class="text-sm text-red-600 mt-2">
-                    @error('form.slug')
+                @error('form.slug')
+                    <div class="text-sm text-red-600 mt-2">
                         <span>{{ $message }}</span>
-                    @enderror
-                </div>
+                    </div>
+                @enderror
             </div>
 
             <!-- Description -->
