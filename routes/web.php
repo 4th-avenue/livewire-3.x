@@ -2,6 +2,7 @@
 
 use App\Livewire\ImageIndex;
 use App\Livewire\Tasks\TasksIndex;
+use App\Livewire\DependentDropdown;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
@@ -20,6 +21,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/tasks', TasksIndex::class)->name('tasks.index');
     Route::get('/images', ImageIndex::class)->name('images.index');
+    Route::get('/dropdown', DependentDropdown::class)->name('dropdown.index');
 });
 
 require __DIR__.'/auth.php';
