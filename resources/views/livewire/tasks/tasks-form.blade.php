@@ -82,6 +82,9 @@
                         </svg>
                     </div>
                 </x-primary-button>
+                <x-secondary-button wire:click="refresh" class="ms-4">
+                    {{ __('Refresh') }}
+                </x-secondary-button>
             </div>
         </form>
     </div>
